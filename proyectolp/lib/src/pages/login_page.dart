@@ -3,11 +3,14 @@ import 'package:flutter/material.dart';
 class LoginPage extends StatefulWidget {
   static String id = 'login_page';
 
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
 
 class _LoginPageState extends State<LoginPage> {
+  final emailController = TextEditingController();
+  final passController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -55,7 +58,8 @@ class _LoginPageState extends State<LoginPage> {
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             elevation: 10.0,
             color: Colors.blueAccent,
-            onPressed: null);
+            onPressed: () => print(emailController.text + " "+passController.text),
+        );
       },
     );
   }
@@ -66,6 +70,7 @@ class _LoginPageState extends State<LoginPage> {
         return Container(
             padding: EdgeInsets.symmetric(horizontal: 30.0),
             child: TextField(
+              controller: passController,
               keyboardType: TextInputType.visiblePassword,
               obscureText: true,
               decoration: InputDecoration(
@@ -85,7 +90,8 @@ class _LoginPageState extends State<LoginPage> {
         return Container(
             padding: EdgeInsets.symmetric(horizontal: 30.0),
             child: TextField(
-              keyboardType: TextInputType.emailAddress,
+              controller: emailController,
+              keyboardType: TextInputType.text,
               decoration: InputDecoration(
                 icon: Icon(Icons.email),
                 hintText: "ejemplo@taller.com",
