@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:proyectolp/src/pages/PetWidget.dart';
 
 
 
@@ -11,30 +12,21 @@ class ManagerHomePage extends StatefulWidget {
 }
 
 class _ManagerHomeState extends State<ManagerHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
   List<Widget> consultarMascotas(){
-    List<Widget> lista = [
-      TextButton(
-        child: const Text('New Pet'),
-        onPressed: () {/* ... */},
-      ),
-      const SizedBox(width: 8),
-      TextButton(
-        child: const Text('New Pet'),
-        onPressed: () {/* ... */},
-      ),
-      const SizedBox(width: 8),
-    ];
+    PetWidget petprueba= new PetWidget("gato", "nuse", 1, "no binario", "gatx",1);
+    PetWidget petprueba2= new PetWidget("hamster", "nuse", 1, "no binario", "gatx",1);
+    List<Widget> lista = [petprueba.widgepantallainicio(),petprueba2.widgepantallainicio(),];
+    /*llamada funcion que retorna lista de WidgetPet
+    widgetpets()
+    for (PetWidget mascota in null){
+      lista.add(mascota.widgepantallainicio())
+    }
+    */
     lista.add(TextButton(
-      child: const Text('New Pet'),
+      child: const Text('Poner en Adopcion'),
       onPressed: () {/* ... */},
     ));
+    //const SizedBox(width: 8),
     return lista;
   }
   @override
@@ -48,11 +40,6 @@ class _ManagerHomeState extends State<ManagerHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: (consultarMascotas()),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }

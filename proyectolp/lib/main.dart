@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:proyectolp/src/pages/login_page.dart';
 import 'package:proyectolp/src/pages/managerhomepage.dart';
+import 'package:proyectolp/src/pages/FormSubmitPetPage.dart';
 
 void main() {
   runApp(MyApp());
@@ -34,8 +35,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+class MyHomePage1 extends StatefulWidget {
+  MyHomePage1({Key key, this.title}) : super(key: key);
 
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
@@ -52,7 +53,7 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage1> {
   int _counter = 0;
 
   void _incrementCounter() {
