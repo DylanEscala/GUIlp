@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: "Hola"),//ManagerHomePage(title: "Manager"), //MyHomePage(title: 'Flutter Demo Home Page'),
+      home: ManagerHomePage(title: "Hola"),//ManagerHomePage(title: "Manager"), //MyHomePage(title: 'Flutter Demo Home Page'),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -51,10 +51,10 @@ class MyHomePage1 extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MyHomePage1State createState() => _MyHomePage1State();
 }
 
-class _MyHomePageState extends State<MyHomePage1> {
+class _MyHomePage1State extends State<MyHomePage1> {
   int _counter = 0;
 
   void _incrementCounter() {
