@@ -6,4 +6,8 @@ class Pet{
   String nombre;
   int id;
   Pet(this.especie, this.raza, this.edad, this.genero, this.nombre,this.id);
+  static List<String> animalesNormales = ["perro","gato","hamster", "loro"];
+  static bool animalConocido(String animal){
+    return animalesNormales.contains(animal);
+  }
 }
