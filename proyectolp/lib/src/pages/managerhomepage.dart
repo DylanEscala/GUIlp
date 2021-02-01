@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:proyectolp/src/pages/PetWidget.dart';
+import 'package:proyectolp/models/Pet.dart';
+import 'package:proyectolp/widgets/PetWidget.dart';
 
 
 
@@ -13,9 +14,11 @@ class ManagerHomePage extends StatefulWidget {
 
 class _ManagerHomeState extends State<ManagerHomePage> {
   List<Widget> consultarMascotas(){
-    PetWidget petprueba= new PetWidget("gato", "nuse", 1, "no binario", "gatx",1);
-    PetWidget petprueba2= new PetWidget("hamster", "nuse", 1, "no binario", "gatx",1);
-    List<Widget> lista = [petprueba.widgepantallainicio(context),petprueba2.widgepantallainicio(context),];
+    Pet mascota1 = Pet("gato", "nuse", 1, "no binario", "gatx",1);
+    PetWidget petprueba= new PetWidget(mascota1);
+    Pet mascota2 = Pet("hamster", "nuse", 1, "no binario", "gatx",1);
+    PetWidget petprueba2= new PetWidget(mascota2);
+    List<Widget> lista = [petprueba.widgepantallainicio(),petprueba2.widgepantallainicio(),];
     /*llamada funcion que retorna lista de WidgetPet
     widgetpets()
     for (PetWidget mascota in null){

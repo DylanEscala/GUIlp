@@ -1,4 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'package:proyectolp/main.dart';
 
 class LoginPage extends StatefulWidget {
   static String id = 'login_page';
@@ -15,6 +19,13 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          title: Text("Inicio de Sesión"),
+          automaticallyImplyLeading: true,
+          leading: IconButton(icon: Icon(Icons.arrow_back_ios_rounded),
+            onPressed: () => {Navigator.pop(context)},
+          ),
+        ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -58,7 +69,13 @@ class _LoginPageState extends State<LoginPage> {
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             elevation: 10.0,
             color: Colors.blueAccent,
-            onPressed: () => print(emailController.text + " "+passController.text),
+            onPressed: () async {
+              final response= await http.get(MyApp.enlace+"users");
+              var list = jsonDecode(response.body);
+              for(int i=0;i<list.length;i++){
+                print(list[i]);
+              }
+            },
         );
       },
     );

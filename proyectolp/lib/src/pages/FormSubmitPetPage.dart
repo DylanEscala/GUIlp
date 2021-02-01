@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proyectolp/src/pages/PetWidget.dart';
+import 'package:proyectolp/widgets/PetWidget.dart';
 
 
 

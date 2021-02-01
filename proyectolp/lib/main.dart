@@ -8,6 +8,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+  static final String enlace="http://df46bc2ffdff.ngrok.io/api/v1/";
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: ManagerHomePage(title: "Manager"), //MyHomePage(title: 'Flutter Demo Home Page'),
+      home: ManagerHomePage(title: "Hola"),//ManagerHomePage(title: "Manager"), //MyHomePage(title: 'Flutter Demo Home Page'),
       debugShowCheckedModeBanner: false,
     );
   }
@@ -50,10 +51,10 @@ class MyHomePage1 extends StatefulWidget {
   final String title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MyHomePage1State createState() => _MyHomePage1State();
 }
 
-class _MyHomePageState extends State<MyHomePage1> {
+class _MyHomePage1State extends State<MyHomePage1> {
   int _counter = 0;
 
   void _incrementCounter() {
@@ -112,7 +113,11 @@ class _MyHomePageState extends State<MyHomePage1> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () {
+          Navigator.push(context,
+          MaterialPageRoute(builder: (context) => LoginPage())
+          );
+        },
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
