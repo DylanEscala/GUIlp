@@ -48,11 +48,9 @@ class _FormSubmitPetState extends State<FormSubmitPetPage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: (crearhijos()),
-        ),
+        child: ListView(scrollDirection: Axis.vertical,shrinkWrap: true,
+        children: crearhijos(),
       ), // This trailing comma makes auto-formatting nicer for build methods.
-    );
+      ));
   }
 }

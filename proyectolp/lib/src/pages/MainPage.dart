@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:proyectolp/widgets/PetWidget.dart';
+//import 'package:proyectolp/widgets/PetWidget.dart';
 
 
 
@@ -13,26 +13,22 @@ class MainPage extends StatefulWidget {
 
 class _MainState extends State<MainPage> {
   void iraadoptar(){
+  }
+  void iradopcion(){
 
   }
   List<Widget> botones(){
-    Widget botonPonerEnAdopcion= RaisedButton(onPressed: (){iraadoptar();},child: Text('Adoptar'),color: Colors.green,textColor: Colors.white,);
+    Widget botonPonerEnAdopcion= RaisedButton(onPressed: (){iradopcion();},child: Text('Adoptar'),color: Colors.green,textColor: Colors.white,);
     Widget botonAdoptar= RaisedButton(onPressed: (){iraadoptar();},child: Text('Poner En Adopcion'),color: Colors.green,textColor: Colors.white,);;
     List<Widget> lista = [botonPonerEnAdopcion,botonAdoptar];
-    /*llamada funcion que retorna lista de WidgetPet
-    widgetpets()
-    for (PetWidget mascota in null){
-      lista.add(mascota.widgepantallainicio())
-    }
-    */
-    //const SizedBox(width: 8),
     return lista;
   }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        //title: Text(widget.title),
+        title: Text("Main"),
       ),
       body: Center(
         child: Column(

@@ -42,13 +42,17 @@ class PetWidget {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            content: Container(
+            content: Stack(
               //overflow: Overflow.visible,
-              child: ListView(scrollDirection: Axis.horizontal,children: <Widget>[
-                Column(children: <Widget>[Row(mainAxisAlignment: MainAxisAlignment.center,children: <Widget> [
-                  Image(width: 100,height: 100,image: AssetImage(imagen)),
-                  SizedBox(width: 30),
-                  Column(mainAxisAlignment: MainAxisAlignment.start,children: <Widget>[
+              children: <Widget>[
+              Container(
+                width: double.infinity,
+                height: 100,
+                child: ListView(scrollDirection: Axis.horizontal,children: <Widget>[
+                  Column(children: <Widget>[Row(mainAxisAlignment: MainAxisAlignment.center,children: <Widget> [
+                    Image(width: 100,height: 100,image: AssetImage(imagen)),
+                    SizedBox(width: 30),
+                    Column(mainAxisAlignment: MainAxisAlignment.start,children: <Widget>[
                     Text('Nombre'),
                     Text(nombre),
                     Text('Especie'),
@@ -65,7 +69,7 @@ class PetWidget {
                   RaisedButton(onPressed: (){adoptar();},child: Text('Adoptar'),color: Colors.green,textColor: Colors.white,),
                 ],)])
               ]
-              ),
+              ))],
             ),
           );
         });

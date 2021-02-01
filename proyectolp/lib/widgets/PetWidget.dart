@@ -10,6 +10,7 @@ class PetWidget {
   void adoptar(){
     //mandar datos al host y actualizar
   }
+
   Widget widgepantallainicio(BuildContext context){
     Widget mainrow = Column(
         children: <Widget>[
@@ -39,7 +40,6 @@ class PetWidget {
     );
     return mainrow;
   }
-
   void view(BuildContext context){
     showDialog(
         context: context,
@@ -48,7 +48,7 @@ class PetWidget {
             content: Container(
               //overflow: Overflow.visible,
               child: ListView(scrollDirection: Axis.horizontal,shrinkWrap: true,padding: const EdgeInsets.all(8.0),children: <Widget>[
-                Column(children: <Widget>[Row(mainAxisAlignment: MainAxisAlignment.center,children: <Widget> [
+                Column(mainAxisSize: MainAxisSize.min,children: <Widget>[Row(mainAxisAlignment: MainAxisAlignment.center,children: <Widget> [
                   Image(width: 100,height: 100,image: AssetImage(imagen)),
                   SizedBox(width: 30),
                   Column(mainAxisAlignment: MainAxisAlignment.start,children: <Widget>[

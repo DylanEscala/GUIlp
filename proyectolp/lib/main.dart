@@ -3,6 +3,7 @@ import 'package:proyectolp/src/pages/login_page.dart';
 import 'package:proyectolp/src/pages/managerhomepage.dart';
 import 'package:proyectolp/src/pages/FormSubmitPetPage.dart';
 import 'package:proyectolp/src/pages/MainPage.dart';
+import 'package:proyectolp/src/pages/Register.dart';
 void main() {
   runApp(MyApp());
 }
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: ManagerHomePage(), //MyHomePage(title: 'Flutter Demo Home Page'),
+      home: FormSubmitPetPage(), //MyHomePage(title: 'Flutter Demo Home Page'),
       debugShowCheckedModeBanner: false,
     );
   }
