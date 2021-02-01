@@ -18,7 +18,9 @@ class _ManagerHomeState extends State<ManagerHomePage> {
     PetWidget petprueba= new PetWidget(mascota1);
     Pet mascota2 = Pet("hamster", "nuse", 1, "no binario", "gatx",1);
     PetWidget petprueba2= new PetWidget(mascota2);
-    List<Widget> lista = [petprueba.widgepantallainicio(),petprueba2.widgepantallainicio(),];
+    Pet mascota3 = Pet("hamster", "nuse", 1, "no binario", "gatx",1);
+    PetWidget petprueba3= new PetWidget(mascota2);
+    List<Widget> lista = [petprueba.widgepantallainicio(),petprueba2.widgepantallainicio(),petprueba3.widgepantallainicio(),petprueba.widgepantallainicio(),petprueba3.widgepantallainicio()];
     /*llamada funcion que retorna lista de WidgetPet
     widgetpets()
     for (PetWidget mascota in null){
@@ -35,8 +37,7 @@ class _ManagerHomeState extends State<ManagerHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+        child: ListView(scrollDirection: Axis.vertical,shrinkWrap: true,
           children: (consultarMascotas()),
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
