@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:proyectolp/src/pages/login_page.dart';
 import 'package:proyectolp/src/pages/managerhomepage.dart';
 import 'package:proyectolp/src/pages/FormSubmitPetPage.dart';
-
+import 'package:proyectolp/src/pages/MainPage.dart';
 void main() {
   runApp(MyApp());
 }

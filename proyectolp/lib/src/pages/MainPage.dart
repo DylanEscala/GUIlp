@@ -3,19 +3,22 @@ import 'package:proyectolp/src/pages/PetWidget.dart';
 
 
 
-class ManagerHomePage extends StatefulWidget {
-  ManagerHomePage({Key key, this.title}) : super(key: key);
+class MainPage extends StatefulWidget {
+  MainPage({Key key, this.title}) : super(key: key);
   final String title;
 
   @override
-  _ManagerHomeState createState() => _ManagerHomeState();
+  _MainState createState() => _MainState();
 }
 
-class _ManagerHomeState extends State<ManagerHomePage> {
-  List<Widget> consultarMascotas(){
-    PetWidget petprueba= new PetWidget("gato", "nuse", 1, "no binario", "gatx",1);
-    PetWidget petprueba2= new PetWidget("hamster", "nuse", 1, "no binario", "gatx",1);
-    List<Widget> lista = [petprueba.widgepantallainicio(context),petprueba2.widgepantallainicio(context),];
+class _MainState extends State<MainPage> {
+  void iraadoptar(){
+
+  }
+  List<Widget> botones(){
+    Widget botonPonerEnAdopcion= RaisedButton(onPressed: (){iraadoptar();},child: Text('Adoptar'),color: Colors.green,textColor: Colors.white,);
+    Widget botonAdoptar= RaisedButton(onPressed: (){iraadoptar();},child: Text('Poner En Adopcion'),color: Colors.green,textColor: Colors.white,);;
+    List<Widget> lista = [botonPonerEnAdopcion,botonAdoptar];
     /*llamada funcion que retorna lista de WidgetPet
     widgetpets()
     for (PetWidget mascota in null){
@@ -34,7 +37,7 @@ class _ManagerHomeState extends State<ManagerHomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: (consultarMascotas()),
+          children: (botones()),
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
