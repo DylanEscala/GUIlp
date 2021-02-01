@@ -20,7 +20,9 @@ class _historialState extends State<historialPage> {
     PetWidget petprueba2= new PetWidget(mascota2);
     Pet mascota3 = Pet("hamster", "nuse", 1, "no binario", "gatx",1);
     PetWidget petprueba3= new PetWidget(mascota2);
-    List<Widget> lista = [petprueba.informacionhistorial(context),petprueba2.informacionhistorial(context),petprueba3.informacionhistorial(context),petprueba.informacionhistorial(context),petprueba3.informacionhistorial(context)];
+    List<Widget> lista = [SizedBox(height: 20.0,),petprueba.informacionhistorial(context),
+      petprueba2.informacionhistorial(context),SizedBox(height: 20.0,),petprueba3.informacionhistorial(context),
+      SizedBox(height: 20.0,),petprueba.informacionhistorial(context),petprueba3.informacionhistorial(context)];
     /*llamada funcion que retorna lista de WidgetPet
     widgetpets()
     for (PetWidget mascota in null){

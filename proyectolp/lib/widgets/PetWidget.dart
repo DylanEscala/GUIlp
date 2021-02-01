@@ -118,10 +118,9 @@ class PetWidget {
         children: <Widget>[
           Text(pet.nombre),
           Image(width: 100,height: 100,image: AssetImage(imagen)),
-          Row(mainAxisAlignment: MainAxisAlignment.center,children:[Text('Especie:'),Text(pet.especie)]),
-          Row(mainAxisAlignment: MainAxisAlignment.center,children:[Text('Raza:'),Text(pet.raza.toString())]),
-          Row(mainAxisAlignment: MainAxisAlignment.center,children:[Text('Edad:'),Text(pet.edad.toString())]),
-          Row(mainAxisAlignment: MainAxisAlignment.center,children:[Text('Genero:'),Text(pet.genero.toString())]),
+          Row(mainAxisAlignment: MainAxisAlignment.center,children:[
+          Column(crossAxisAlignment: CrossAxisAlignment.end,children: [Text('Especie:'),Text('Raza:'),Text('Edad:'),Text('Genero:'),],),
+          Column(crossAxisAlignment: CrossAxisAlignment.start,children: [Text(pet.especie),Text(pet.raza.toString()),Text(pet.edad.toString()),Text(pet.genero.toString())])])
         ]
     );
     return mainrow;
