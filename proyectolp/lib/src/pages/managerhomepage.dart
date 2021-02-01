@@ -26,6 +26,7 @@ class _ManagerHomeState extends State<ManagerHomePage> {
   List<Widget> consultarMascotas(List<Pet> listaMascotas){
     List<Widget> lista = [];
     for(int i=0; i<listaMascotas.length; i++){
+      lista.add(SizedBox(height: 20.0,));
       lista.add(PetWidget(listaMascotas[i]).widgepantallainicio(context));
     }
     return lista;

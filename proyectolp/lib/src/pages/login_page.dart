@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:proyectolp/models/HTTPClient.dart';
 import 'package:proyectolp/src/pages/MainPage.dart';
+import 'package:proyectolp/src/pages/Register.dart';
 
 class LoginPage extends StatefulWidget {
   static String id = 'login_page';
@@ -15,6 +16,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final emailController = TextEditingController();
   final passController = TextEditingController();
+  bool _isVisible = false;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -47,10 +50,19 @@ class _LoginPageState extends State<LoginPage> {
                 height: 15.0,
               ),
               _passwordTextField(),
-              SizedBox(height: 20.0),
+              SizedBox(height: 20.0,),
+              Visibility(
+                  visible: _isVisible,
+                  child: Container(
+                      padding: EdgeInsets.symmetric(horizontal: 35.0),
+                      child:Text("Error, no pudo iniciar sesión", style: TextStyle(color: Colors.red),)
+                  )
+              ),
+              SizedBox(height: 10.0),
               _bottonLogin(),
               SizedBox(height: 10.0,),
               _bottonRegister(),
+
               SizedBox(height: 50.0,)
             ],
           ),
@@ -84,13 +96,19 @@ class _LoginPageState extends State<LoginPage> {
             onPressed: () async {
              bool pudoIngresar = await HTTPClient().login(emailController.text, passController.text);
              if(pudoIngresar){
+               setState(() {
+                 _isVisible = false;
+               });
                Navigator.push(context,
                    MaterialPageRoute(builder: (context) => MainPage())
                );
 
              }
              else{
-               print("Valio ñamita");
+                setState(() {
+                  _isVisible = true;
+                });
+
              }
             },
         )
@@ -120,7 +138,9 @@ class _LoginPageState extends State<LoginPage> {
           elevation: 10.0,
           color: Colors.blueAccent,
           onPressed: () async {
-            print("Registrar");
+            Navigator.push(context,
+              MaterialPageRoute(builder: (context) => RegisterPage())
+            );
           },
         )
         );
