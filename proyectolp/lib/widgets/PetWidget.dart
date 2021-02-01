@@ -46,6 +46,7 @@ class PetWidget {
         builder: (BuildContext context) {
           return AlertDialog(
             content: Container(
+              height: 275,
               //overflow: Overflow.visible,
               child: ListView(scrollDirection: Axis.horizontal,shrinkWrap: true,padding: const EdgeInsets.all(8.0),children: <Widget>[
                 Column(mainAxisSize: MainAxisSize.min,children: <Widget>[Row(mainAxisAlignment: MainAxisAlignment.center,children: <Widget> [
@@ -64,9 +65,9 @@ class PetWidget {
                     Text(pet.genero.toString()),
                   ],
                   )]
-                ),Row(mainAxisAlignment: MainAxisAlignment.center,children: <Widget>[
-                  RaisedButton(onPressed: (){adoptar();},child: Text('Adoptar'),color: Colors.green,textColor: Colors.white,),
-                ],)])
+                ),
+                  RaisedButton(onPressed: (){adoptar();},child: Text('Adoptar'),color: Colors.green,textColor: Colors.white,)],
+                )
               ]
               ),
             ),
