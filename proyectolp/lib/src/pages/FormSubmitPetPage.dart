@@ -46,6 +46,9 @@ class _FormSubmitPetState extends State<FormSubmitPetPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        leading: IconButton(icon: Icon(Icons.arrow_back_ios_rounded),
+          onPressed: () => {Navigator.pop(context)},
+        ),
       ),
       body: Center(
         child: ListView(scrollDirection: Axis.vertical,shrinkWrap: true,

@@ -1,10 +1,17 @@
 import 'package:flutter/material.dart';
 
+import 'package:proyectolp/src/pages/FormSubmitPetPage.dart';
+import 'package:proyectolp/src/pages/managerhomepage.dart';
+import 'package:proyectolp/src/pages/historialPage.dart';
+
+
+
+
 
 
 class MainPage extends StatefulWidget {
-  MainPage({Key key, this.title}) : super(key: key);
-  final String title;
+  MainPage({Key key}) : super(key: key);
+  final String title="Menú Principal";
 
   @override
   _MainState createState() => _MainState();
@@ -12,15 +19,26 @@ class MainPage extends StatefulWidget {
 
 class _MainState extends State<MainPage> {
   void showhistorial(){
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => historialPage())
+    );
   }
-  void iraadoptar(){
-  }
-  void iradopcion(){
+  void _redirDarAdopcion(BuildContext context){
 
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => FormSubmitPetPage())
+    );
   }
-  List<Widget> botones(){
-    Widget botonPonerEnAdopcion= RaisedButton(onPressed: (){iradopcion();},child: Text('Adoptar'),color: Colors.green,textColor: Colors.white,);
-    Widget botonAdoptar= RaisedButton(onPressed: (){iraadoptar();},child: Text('Poner En Adopcion'),color: Colors.green,textColor: Colors.white,);
+
+  void _redirAdoptar(BuildContext context){
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => ManagerHomePage())
+    );
+  }
+
+  List<Widget> botones(BuildContext context){
+    Widget botonPonerEnAdopcion= RaisedButton(onPressed: (){_redirDarAdopcion(context);},child: Text('Poner En Adopcion'),color: Colors.green,textColor: Colors.white,);
+    Widget botonAdoptar= RaisedButton(onPressed: (){_redirAdoptar(context);},child: Text('Adoptar'),color: Colors.green,textColor: Colors.white,);
     Widget historial= RaisedButton(onPressed: (){showhistorial();},child: Text('Historial Adopcion'),color: Colors.green,textColor: Colors.white,);;
     List<Widget> lista = [botonPonerEnAdopcion,botonAdoptar,historial];
     return lista;
@@ -29,13 +47,15 @@ class _MainState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        //title: Text(widget.title),
-        title: Text("Main"),
+        title: Text(widget.title),
+        leading: IconButton(icon: Icon(Icons.arrow_back_ios_rounded),
+          onPressed: () => {Navigator.pop(context)},
+        ),
       ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: (botones()),
+          children: (botones(context)),
         ),
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );

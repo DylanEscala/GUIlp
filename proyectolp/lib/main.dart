@@ -32,7 +32,8 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: ManagerHomePage(), //MyHomePage(title: 'Flutter Demo Home Page'),
+
+      home: LoginPage(), //MyHomePage(title: 'Flutter Demo Home Page'),
       debugShowCheckedModeBanner: false,
     );
   }

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:proyectolp/main.dart';
 import 'package:proyectolp/models/Pet.dart';
 import 'package:proyectolp/widgets/PetWidget.dart';
 
 
 
 class AdoptarConfirmationPage extends StatefulWidget {
+  static Pet selected;
   AdoptarConfirmationPage({Key key}) : super(key: key);
   final String title = "Ver mascotas";
 
@@ -14,20 +16,9 @@ class AdoptarConfirmationPage extends StatefulWidget {
 
 class _AdoptarConfirmationState extends State<AdoptarConfirmationPage> {
   List<Widget> consultarhistorial(){
-    Pet mascota1 = Pet("sapo", "nuse", 1, "no binario", "gatx",1);
+    Pet mascota1 = AdoptarConfirmationPage.selected;
     PetWidget petprueba= new PetWidget(mascota1);
-    Pet mascota2 = Pet("hamster", "nuse", 1, "no binario", "gatx",1);
-    PetWidget petprueba2= new PetWidget(mascota2);
-    Pet mascota3 = Pet("hamster", "nuse", 1, "no binario", "gatx",1);
-    PetWidget petprueba3= new PetWidget(mascota2);
-    List<Widget> lista = [petprueba.informacionhistorial(context),petprueba2.informacionhistorial(context),petprueba3.informacionhistorial(context),petprueba.informacionhistorial(context),petprueba3.informacionhistorial(context)];
-    /*llamada funcion que retorna lista de WidgetPet
-    widgetpets()
-    for (PetWidget mascota in null){
-      lista.add(mascota.widgepantallainicio())
-    }
-    */
-    //const SizedBox(width: 8),
+    List<Widget> lista = [petprueba.confirmar(),Row(mainAxisAlignment: MainAxisAlignment.center,children: [RaisedButton(onPressed: (){},child: Text('Adoptar'),color: Colors.green,textColor: Colors.white,),SizedBox(width: 30),RaisedButton(onPressed: (){Navigator.pop(context);},child: Text('Cancelar'),color: Colors.red,textColor: Colors.white,)])];
     return lista;
   }
   @override

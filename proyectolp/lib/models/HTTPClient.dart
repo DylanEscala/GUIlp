@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:proyectolp/models/Pet.dart';
 
 class HTTPClient{
   HTTPClient._internal();
@@ -11,7 +12,7 @@ class HTTPClient{
 
   static final HTTPClient _instance = new HTTPClient._internal();
 
-  final String enlace="http://df46bc2ffdff.ngrok.io/api/v1/";
+  final String _enlace="http://df46bc2ffdff.ngrok.io/api/v1/";
 
   String authToken;
 
@@ -29,10 +30,10 @@ class HTTPClient{
       'password': pass,
     });
 
-    final response = await http.post(enlace+"authenticate", body: bodyEncoded, headers: {
+    final response = await http.post(_enlace+"authenticate", body: bodyEncoded, headers: {
       'Content-Type': 'application/json'
     });
-    var resp = await jsonDecode(response.body);
+    var resp = jsonDecode(response.body);
     if(resp['error']!=null) {
       print("Error");
       return false;
@@ -43,6 +44,17 @@ class HTTPClient{
       return true;
     }
   }
+
+    Future<List<Pet>> verMascotas() async{
+      List<Pet> list = [];
+      final response = await http.get(_enlace+"pets", headers: _getRequestHeaders());
+      var lista = jsonDecode(response.body);
+      print(response.body);
+      for(int i=0; i<lista.length;i++){
+        list.add(Pet.fromJSON(lista[i]));
+      }
+      return list;
+    }
   
   
 }

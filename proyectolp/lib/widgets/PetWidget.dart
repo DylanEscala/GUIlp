@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:proyectolp/models/Pet.dart';
+import 'package:proyectolp/src/pages/AdoptarConfirmationPage.dart';
+import 'package:proyectolp/src/pages/AdoptarConfirmationPage.dart';
+
 class PetWidget {
   Pet pet;
   String imagen;
@@ -7,8 +10,11 @@ class PetWidget {
     setimagen();
 
   }
-  void adoptar(){
-    //mandar datos al host y actualizar
+  void adoptar(context){
+    AdoptarConfirmationPage.selected=pet;
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => AdoptarConfirmationPage())
+    );
   }
 
   Widget widgepantallainicio(BuildContext context){
@@ -17,27 +23,32 @@ class PetWidget {
           Row(mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget> [
                 Image(width: 100,height: 100,image: AssetImage(imagen)),
-                SizedBox(width: 30),
+                SizedBox(width: MediaQuery.of(context).size.width*0.5-100),
                 Column(mainAxisAlignment: MainAxisAlignment.start,children: <Widget>[
-                  Text('Nombre'),
+                  Text('Nombre: '),
                   Text(pet.nombre),
-                  Text('Especie'),
+                  Text('\nEspecie: '),
                   Text(pet.especie),
-                  Text('Edad'),
+                  Text('\nEdad: '),
                   Text(pet.edad.toString())
                   ],
 
                 )
               ]
           ),
-          Row(mainAxisAlignment: MainAxisAlignment.center,children: <Widget>[
-            RaisedButton(onPressed: (){view(context);},child: Text('Ver'),color: Colors.green,textColor: Colors.white,),
-            SizedBox(width: 10),
-            RaisedButton(onPressed: (){adoptar();},child: Text('Adoptar'),color: Colors.green,textColor: Colors.white,)
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(child: RaisedButton(onPressed: (){view(context);},child: Text('Ver'),color: Colors.green,textColor: Colors.white,), width: MediaQuery.of(context).size.width*0.4,),
+              SizedBox(width: 10),
+              Container(child: RaisedButton(onPressed: (){adoptar(context);},child: Text('Adoptar'),color: Colors.green,textColor: Colors.white,), width: MediaQuery.of(context).size.width*0.4,),
             ],
-          )
-        ]
+
+          ),
+
+        ],
     );
+
     return mainrow;
   }
   void view(BuildContext context){
@@ -84,9 +95,9 @@ class PetWidget {
                 Column(mainAxisAlignment: MainAxisAlignment.start,children: <Widget>[
                   Text('Nombre'),
                   Text(pet.nombre),
-                  Text('Especie'),
+                  Text('\nEspecie'),
                   Text(pet.especie),
-                  Text('Edad'),
+                  Text('\nEdad'),
                   Text(pet.edad.toString())
                 ],
 
@@ -101,6 +112,20 @@ class PetWidget {
     );
     return mainrow;
   }
+  Widget confirmar(){
+    Widget mainrow = Column(
+        children: <Widget>[
+          Text(pet.nombre),
+          Image(width: 100,height: 100,image: AssetImage(imagen)),
+          Row(mainAxisAlignment: MainAxisAlignment.center,children:[Text('Especie:'),Text(pet.especie)]),
+          Row(mainAxisAlignment: MainAxisAlignment.center,children:[Text('Raza:'),Text(pet.raza.toString())]),
+          Row(mainAxisAlignment: MainAxisAlignment.center,children:[Text('Edad:'),Text(pet.edad.toString())]),
+          Row(mainAxisAlignment: MainAxisAlignment.center,children:[Text('Genero:'),Text(pet.genero.toString())]),
+        ]
+    );
+    return mainrow;
+  }
+
 
   void  setimagen(){
   if(Pet.animalesNormales.contains(pet.especie))

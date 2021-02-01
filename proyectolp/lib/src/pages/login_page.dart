@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:proyectolp/models/HTTPClient.dart';
+import 'package:proyectolp/src/pages/MainPage.dart';
 
 class LoginPage extends StatefulWidget {
   static String id = 'login_page';
@@ -21,15 +22,20 @@ class _LoginPageState extends State<LoginPage> {
         appBar: AppBar(
           title: Text("Inicio de Sesión"),
           automaticallyImplyLeading: true,
-          leading: IconButton(icon: Icon(Icons.arrow_back_ios_rounded),
+          /*leading: IconButton(icon: Icon(Icons.arrow_back_ios_rounded),
             onPressed: () => {Navigator.pop(context)},
-          ),
+          ),*/
         ),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+          /*Center(
+            child: ListView(scrollDirection: Axis.vertical,shrinkWrap: true,
+              children: (consultarMascotas()),
+            ),
+          ),*/
+          child: ListView(scrollDirection: Axis.vertical,shrinkWrap: true,
+
             children: [
-              Flexible(
+              Container(
                 child: Image.asset(
                   'images/perro.png',
                   height: 300.0,
@@ -43,6 +49,9 @@ class _LoginPageState extends State<LoginPage> {
               _passwordTextField(),
               SizedBox(height: 20.0),
               _bottonLogin(),
+              SizedBox(height: 10.0,),
+              _bottonRegister(),
+              SizedBox(height: 50.0,)
             ],
           ),
         ),
@@ -53,8 +62,12 @@ class _LoginPageState extends State<LoginPage> {
   Widget _bottonLogin() {
     return StreamBuilder(
       builder: (context, snapshot) {
-        return RaisedButton(
+        return Container(
+            padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
+        child: RaisedButton(
+
             child: Container(
+
               padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
               child: Text(
                 "Iniciar Sesion",
@@ -67,12 +80,54 @@ class _LoginPageState extends State<LoginPage> {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             elevation: 10.0,
-            color: Colors.blueAccent,
-            onPressed: () => print(HTTPClient().login(emailController.text, passController.text)),
+            color: Colors.lightGreen,
+            onPressed: () async {
+             bool pudoIngresar = await HTTPClient().login(emailController.text, passController.text);
+             if(pudoIngresar){
+               Navigator.push(context,
+                   MaterialPageRoute(builder: (context) => MainPage())
+               );
+
+             }
+             else{
+               print("Valio ñamita");
+             }
+            },
+        )
         );
       },
     );
   }
+
+  Widget _bottonRegister() {
+    return StreamBuilder(
+      builder: (context, snapshot) {
+        return Container(
+            padding: EdgeInsets.symmetric(horizontal: 20.0),
+        child: RaisedButton(
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
+            child: Text(
+              "Registrar",
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 16.0,
+              ),
+            ),
+          ),
+          shape:
+          RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          elevation: 10.0,
+          color: Colors.blueAccent,
+          onPressed: () async {
+            print("Registrar");
+          },
+        )
+        );
+      },
+    );
+  }
+
 
   Widget _passwordTextField() {
     return StreamBuilder(
