@@ -52,8 +52,9 @@ class PetWidget {
           return AlertDialog(
             content: Container(
               height: 275,
+              width: MediaQuery.of(context).size.width*0.8,
               //overflow: Overflow.visible,
-              child: ListView(scrollDirection: Axis.horizontal,shrinkWrap: true,padding: const EdgeInsets.all(8.0),children: <Widget>[
+              child: ListView(scrollDirection: Axis.vertical,shrinkWrap: true,padding: const EdgeInsets.all(8.0),children: <Widget>[
                 Column(mainAxisSize: MainAxisSize.min,children: <Widget>[Row(mainAxisAlignment: MainAxisAlignment.center,children: <Widget> [
                   Image(width: 100,height: 100,image: AssetImage(imagen)),
                   SizedBox(width: 30),
