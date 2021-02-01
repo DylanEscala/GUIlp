@@ -4,6 +4,7 @@ import 'package:proyectolp/src/pages/managerhomepage.dart';
 import 'package:proyectolp/src/pages/FormSubmitPetPage.dart';
 import 'package:proyectolp/src/pages/MainPage.dart';
 import 'package:proyectolp/src/pages/Register.dart';
+import 'package:proyectolp/src/pages/historialPage.dart';
 void main() {
   runApp(MyApp());
 }

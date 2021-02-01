@@ -66,7 +66,7 @@ class PetWidget {
                   ],
                   )]
                 ),
-                  RaisedButton(onPressed: (){adoptar();},child: Text('Adoptar'),color: Colors.green,textColor: Colors.white,)],
+                  RaisedButton(onPressed: (){Navigator.pop(context, false);},child: Text('Cerrar'),color: Colors.green,textColor: Colors.white,)],
                 )
               ]
               ),
@@ -74,10 +74,37 @@ class PetWidget {
           );
         });
   }
+  Widget informacionhistorial(BuildContext context){
+    Widget mainrow = Column(
+        children: <Widget>[
+          Row(mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget> [
+                Image(width: 100,height: 100,image: AssetImage(imagen)),
+                SizedBox(width: 30),
+                Column(mainAxisAlignment: MainAxisAlignment.start,children: <Widget>[
+                  Text('Nombre'),
+                  Text(pet.nombre),
+                  Text('Especie'),
+                  Text(pet.especie),
+                  Text('Edad'),
+                  Text(pet.edad.toString())
+                ],
+
+                )
+              ]
+          ),
+          Row(mainAxisAlignment: MainAxisAlignment.center,children: <Widget>[
+            RaisedButton(onPressed: (){view(context);},child: Text('Ver'),color: Colors.green,textColor: Colors.white,)
+          ],
+          )
+        ]
+    );
+    return mainrow;
+  }
 
   void  setimagen(){
   if(Pet.animalesNormales.contains(pet.especie))
-    imagen='images/'+pet.especie+'.png';
+    imagen = 'images/' + pet.especie + '.png';
   else
     imagen='images/otro.png';
   }

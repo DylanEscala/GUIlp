@@ -11,6 +11,8 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainState extends State<MainPage> {
+  void showhistorial(){
+  }
   void iraadoptar(){
   }
   void iradopcion(){
@@ -18,8 +20,9 @@ class _MainState extends State<MainPage> {
   }
   List<Widget> botones(){
     Widget botonPonerEnAdopcion= RaisedButton(onPressed: (){iradopcion();},child: Text('Adoptar'),color: Colors.green,textColor: Colors.white,);
-    Widget botonAdoptar= RaisedButton(onPressed: (){iraadoptar();},child: Text('Poner En Adopcion'),color: Colors.green,textColor: Colors.white,);;
-    List<Widget> lista = [botonPonerEnAdopcion,botonAdoptar];
+    Widget botonAdoptar= RaisedButton(onPressed: (){iraadoptar();},child: Text('Poner En Adopcion'),color: Colors.green,textColor: Colors.white,);
+    Widget historial= RaisedButton(onPressed: (){showhistorial();},child: Text('Historial Adopcion'),color: Colors.green,textColor: Colors.white,);;
+    List<Widget> lista = [botonPonerEnAdopcion,botonAdoptar,historial];
     return lista;
   }
   @override
