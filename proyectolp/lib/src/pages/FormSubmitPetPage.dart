@@ -4,8 +4,8 @@ import 'package:proyectolp/widgets/PetWidget.dart';
 
 
 class FormSubmitPetPage extends StatefulWidget {
-  FormSubmitPetPage({Key key, this.title}) : super(key: key);
-  final String title;
+  FormSubmitPetPage({Key key}) : super(key: key);
+  final String title="Registrar Mascota";
 
   @override
   _FormSubmitPetState createState() => _FormSubmitPetState();

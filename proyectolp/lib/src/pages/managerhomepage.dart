@@ -5,8 +5,8 @@ import 'package:proyectolp/widgets/PetWidget.dart';
 
 
 class ManagerHomePage extends StatefulWidget {
-  ManagerHomePage({Key key, this.title}) : super(key: key);
-  final String title;
+  ManagerHomePage({Key key}) : super(key: key);
+  final String title = "Ver mascotas";
 
   @override
   _ManagerHomeState createState() => _ManagerHomeState();
@@ -18,7 +18,7 @@ class _ManagerHomeState extends State<ManagerHomePage> {
     PetWidget petprueba= new PetWidget(mascota1);
     Pet mascota2 = Pet("hamster", "nuse", 1, "no binario", "gatx",1);
     PetWidget petprueba2= new PetWidget(mascota2);
-    List<Widget> lista = [petprueba.widgepantallainicio(),petprueba2.widgepantallainicio(),];
+    List<Widget> lista = [petprueba.widgepantallainicio(context),petprueba2.widgepantallainicio(context),];
     /*llamada funcion que retorna lista de WidgetPet
     widgetpets()
     for (PetWidget mascota in null){

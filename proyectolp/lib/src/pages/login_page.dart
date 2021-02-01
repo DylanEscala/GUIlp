@@ -1,8 +1,7 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'package:proyectolp/main.dart';
+import 'package:proyectolp/models/HTTPClient.dart';
 
 class LoginPage extends StatefulWidget {
   static String id = 'login_page';
@@ -69,13 +68,7 @@ class _LoginPageState extends State<LoginPage> {
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             elevation: 10.0,
             color: Colors.blueAccent,
-            onPressed: () async {
-              final response= await http.get(MyApp.enlace+"users");
-              var list = jsonDecode(response.body);
-              for(int i=0;i<list.length;i++){
-                print(list[i]);
-              }
-            },
+            onPressed: () => print(HTTPClient().login(emailController.text, passController.text)),
         );
       },
     );
