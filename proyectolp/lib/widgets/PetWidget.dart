@@ -17,27 +17,32 @@ class PetWidget {
           Row(mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget> [
                 Image(width: 100,height: 100,image: AssetImage(imagen)),
-                SizedBox(width: 30),
+                SizedBox(width: MediaQuery.of(context).size.width*0.5-100),
                 Column(mainAxisAlignment: MainAxisAlignment.start,children: <Widget>[
-                  Text('Nombre'),
+                  Text('Nombre: '),
                   Text(pet.nombre),
-                  Text('Especie'),
+                  Text('\nEspecie: '),
                   Text(pet.especie),
-                  Text('Edad'),
+                  Text('\nEdad: '),
                   Text(pet.edad.toString())
                   ],
 
                 )
               ]
           ),
-          Row(mainAxisAlignment: MainAxisAlignment.center,children: <Widget>[
-            RaisedButton(onPressed: (){view(context);},child: Text('Ver'),color: Colors.green,textColor: Colors.white,),
-            SizedBox(width: 10),
-            RaisedButton(onPressed: (){adoptar();},child: Text('Adoptar'),color: Colors.green,textColor: Colors.white,)
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(child: RaisedButton(onPressed: (){view(context);},child: Text('Ver'),color: Colors.green,textColor: Colors.white,), width: MediaQuery.of(context).size.width*0.4,),
+              SizedBox(width: 10),
+              Container(child: RaisedButton(onPressed: (){adoptar();},child: Text('Adoptar'),color: Colors.green,textColor: Colors.white,), width: MediaQuery.of(context).size.width*0.4,),
             ],
-          )
-        ]
+
+          ),
+
+        ],
     );
+
     return mainrow;
   }
   void view(BuildContext context){
