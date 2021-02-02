@@ -23,7 +23,6 @@ class _historialState extends State<historialPage> {
         height: 20.0,
       ),
       petprueba.informacionhistorial(context),
-      petprueba2.informacionhistorial(context),
       SizedBox(
         height: 20.0,
       ),
@@ -32,6 +31,43 @@ class _historialState extends State<historialPage> {
         height: 20.0,
       ),
       petprueba.informacionhistorial(context),
+      SizedBox(
+        height: 20.0,
+      ),
+      petprueba3.informacionhistorial(context)
+    ];
+    /*llamada funcion que retorna lista de WidgetPet
+    widgetpets()
+    for (PetWidget mascota in null){
+      lista.add(mascota.widgepantallainicio())
+    }
+    */
+    //const SizedBox(width: 8),
+    return lista;
+  }
+  List<Widget> consultarpuestosenAdopcion() {
+    Pet mascota1 = Pet("sapo", "nuse", 1, "no binario", "gatx", 1);
+    PetWidget petprueba = new PetWidget(mascota1);
+    Pet mascota2 = Pet("hamster", "nuse", 1, "no binario", "gatx", 1);
+    PetWidget petprueba2 = new PetWidget(mascota2);
+    Pet mascota3 = Pet("hamster", "nuse", 1, "no binario", "gatx", 1);
+    PetWidget petprueba3 = new PetWidget(mascota2);
+    List<Widget> lista = [
+      SizedBox(
+        height: 20.0,
+      ),
+      petprueba2.informacionhistorial(context),
+      SizedBox(
+        height: 20.0,
+      ),
+      petprueba2.informacionhistorial(context),
+      SizedBox(
+        height: 20.0,
+      ),
+      petprueba.informacionhistorial(context),
+      SizedBox(
+        height: 20.0,
+      ),
       petprueba3.informacionhistorial(context)
     ];
     /*llamada funcion que retorna lista de WidgetPet
@@ -44,19 +80,42 @@ class _historialState extends State<historialPage> {
     return lista;
   }
 
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: ListView(
-          scrollDirection: Axis.vertical,
-          shrinkWrap: true,
-          children: (consultarhistorial()),
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          appBar: AppBar(
+            title: Text(widget.title),
+            leading: IconButton(
+              icon: Icon(Icons.arrow_back_ios_rounded),
+              onPressed: () => {Navigator.pop(context)},
+            ),
+            bottom: TabBar(
+              tabs: [
+                Text("Adoptados"),
+                Text("Puestos Adopcion"),
+              ],
+            ),
+          ),
+          body: TabBarView(
+            children: [
+              ListView(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              children: (consultarhistorial()),
+              ),ListView(
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                children: (consultarpuestosenAdopcion()),
+              )
+            ],
+          ),
         ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
   }
 }
