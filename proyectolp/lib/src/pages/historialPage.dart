@@ -11,6 +11,8 @@ class historialPage extends StatefulWidget {
 }
 
 class _historialState extends State<historialPage> {
+  Future<List<Pet>> mascotasadoptadas;
+  Future<List<Pet>> mascotasadopcion;
   List<Widget> consultarhistorial() {
     Pet mascota1 = Pet("sapo", "nuse", 1, "no binario", "gatx", 1);
     PetWidget petprueba = new PetWidget(mascota1);
@@ -102,16 +104,28 @@ class _historialState extends State<historialPage> {
             ),
           ),
           body: TabBarView(
-            children: [
-              ListView(
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-              children: (consultarhistorial()),
-              ),ListView(
-                scrollDirection: Axis.vertical,
-                shrinkWrap: true,
-                children: (consultarpuestosenAdopcion()),
-              )
+            children: [FutureBuilder<List<Pet>>(
+                future: mascotasadoptadas,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData)
+                    return ListView(
+                      scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                      children: (consultarhistorial()),
+                    );
+                  else if (snapshot.hasError) return Text("${snapshot.error}");
+                  return CircularProgressIndicator();
+                }),FutureBuilder<List<Pet>>(
+                future: mascotasadopcion,
+                builder: (context, snapshot) {
+                  if (snapshot.hasData)
+                    return ListView(
+                        scrollDirection: Axis.vertical,
+                        shrinkWrap: true,
+                        children: (consultarpuestosenAdopcion()));
+                  else if (snapshot.hasError) return Text("${snapshot.error}");
+                  return CircularProgressIndicator();
+                }),
             ],
           ),
         ),
