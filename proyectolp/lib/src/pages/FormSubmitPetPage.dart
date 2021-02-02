@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:proyectolp/models/HTTPClient.dart';
 import 'package:proyectolp/models/Pet.dart';
-import 'package:proyectolp/widgets/PetWidget.dart';
+import 'package:proyectolp/src/pages/RegistroPetPage.dart';
 
 class FormSubmitPetPage extends StatefulWidget {
   FormSubmitPetPage({Key key}) : super(key: key);
@@ -12,6 +12,10 @@ class FormSubmitPetPage extends StatefulWidget {
 }
 
 class _FormSubmitPetState extends State<FormSubmitPetPage> {
+  void _redirConfirmation(Pet animal,BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => RegistroPetPage(animal)));
+  }
   void submitpet(BuildContext context) {
     Pet pet = Pet(_especieTexto, _raza.text, int.parse(_edad.text),
         _genero.text, _nombre.text, 0);
@@ -155,7 +159,9 @@ class _FormSubmitPetState extends State<FormSubmitPetPage> {
               ),
               RaisedButton(
                 onPressed: () {
-                  submitpet(context);
+                  Pet pet = Pet(_especieTexto, _raza.text, int.parse(_edad.text),
+                      _genero.text, _nombre.text, 0);
+                  _redirConfirmation(pet,context);
                 },
                 child: Text('Poner en Adopcion'),
                 color: Colors.green,
