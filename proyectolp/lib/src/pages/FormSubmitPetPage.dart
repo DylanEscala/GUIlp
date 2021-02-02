@@ -34,11 +34,10 @@ class _FormSubmitPetState extends State<FormSubmitPetPage> {
                       Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: <Widget>[
-                            IconButton(
-                              icon: Icon(Icons.check),
-                              color: Colors.lightGreen,
-                              iconSize: 20.0,
-                            ),
+                            IconTheme(
+                                child: Icon(Icons.check),
+                                data: IconThemeData(
+                                    color: Colors.lightGreen, size: 20.0)),
                             SizedBox(width: 30),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.start,
