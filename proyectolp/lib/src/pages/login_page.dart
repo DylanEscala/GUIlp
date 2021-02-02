@@ -175,9 +175,9 @@ class _LoginPageState extends State<LoginPage> {
               controller: emailController,
               keyboardType: TextInputType.text,
               decoration: InputDecoration(
-                icon: Icon(Icons.email),
-                hintText: "ejemplo@taller.com",
-                labelText: "Correo electrónico",
+                icon: Icon(Icons.person),
+                hintText: "Nombre de usuario",
+                labelText: "Nombre de usuario",
               ),
               onChanged: (value) {},
             ));
