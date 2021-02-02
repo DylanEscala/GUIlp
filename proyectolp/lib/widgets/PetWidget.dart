@@ -10,9 +10,8 @@ class PetWidget {
     setimagen();
   }
   void adoptar(context) {
-    AdoptarConfirmationPage.selected = pet;
     Navigator.push(context,
-        MaterialPageRoute(builder: (context) => AdoptarConfirmationPage()));
+        MaterialPageRoute(builder: (context) => AdoptarConfirmationPage(this.pet)));
   }
 
   Widget widgepantallainicio(BuildContext context) {
