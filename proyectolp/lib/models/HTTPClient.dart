@@ -6,6 +6,7 @@ import 'package:proyectolp/models/Pet.dart';
 
 class HTTPClient{
   HTTPClient._internal();
+  int _userID;
 
   factory HTTPClient(){
     return _instance;
@@ -15,12 +16,13 @@ class HTTPClient{
 
   final String _enlace="http://df46bc2ffdff.ngrok.io/api/v1/";
 
-  String authToken;
+  String _authToken;
 
   Map<String,String> _getRequestHeaders(){
     return {
-      'Authorization': '$authToken',
-      'Content-Type': 'application/json'
+      'Authorization': '$_authToken',
+      'Content-Type': 'application/json',
+      'Accept': 'application/json'
     };
   }
 
@@ -41,15 +43,21 @@ class HTTPClient{
       return false;
     }
     else{
-      authToken=resp['auth_token'];
-      print(authToken);
+      _authToken=resp['token'];
+      _userID = resp['user_id'];
       return true;
     }
   }
 
+  Future<Pet> obtenerMascota(int id) async{
+    final response = await http.get(_enlace+"pets/"+id.toString(), headers: _getRequestHeaders());
+    var json = jsonDecode(response.body);
+    return Pet.fromJSON(json);
+  }
+
     Future<List<Pet>> verMascotas() async{
       List<Pet> list = [];
-      final response = await http.get(_enlace+"pets", headers: _getRequestHeaders());
+      final response = await http.get(_enlace+"pets?adopted=false", headers: _getRequestHeaders());
       var lista = jsonDecode(response.body);
       print(response.body);
       for(int i=0; i<lista.length;i++){
@@ -72,6 +80,16 @@ class HTTPClient{
       final response = await http.post(_enlace+'pets', body: bodyEncoded, headers: _getRequestHeaders());
 
       print(response.body);
+
+      var body2Encoded = jsonEncode(<String, dynamic> {
+        'donante_id': _userID,
+        'pets_id': jsonDecode(response.body)['id'],
+        'adopter_id': null
+      });
+
+      final response2 = await http.post(_enlace+'adopcions', body: body2Encoded, headers: _getRequestHeaders());
+
+      print(response2.body);
       
     }
 

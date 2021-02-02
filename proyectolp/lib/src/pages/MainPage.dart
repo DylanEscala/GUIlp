@@ -4,7 +4,6 @@ import 'package:proyectolp/src/pages/FormSubmitPetPage.dart';
 import 'package:proyectolp/src/pages/managerhomepage.dart';
 import 'package:proyectolp/src/pages/historialPage.dart';
 
-
 class MainPage extends StatefulWidget {
   MainPage({Key key}) : super(key: key);
   final String title = "Menú Principal";
@@ -14,21 +13,20 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainState extends State<MainPage> {
-  void showhistorial(){
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => historialPage())
-    );
+  void showhistorial() {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => historialPage()));
   }
+
   void _redirDarAdopcion(BuildContext context) {
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => FormSubmitPetPage())
-    );
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => FormSubmitPetPage()));
   }
+
   void _redirAdoptar(BuildContext context) {
     Navigator.push(
         context, MaterialPageRoute(builder: (context) => ManagerHomePage()));
   }
-
 
   List<Widget> botones(BuildContext context) {
     Widget botonPonerEnAdopcion = RaisedButton(
@@ -64,7 +62,12 @@ class _MainState extends State<MainPage> {
       color: Colors.green,
       textColor: Colors.white,
     );
-    List<Widget> lista = [botonPonerEnAdopcion, botonAdoptar,botonhistorial, botonCerrar];
+    List<Widget> lista = [
+      botonPonerEnAdopcion,
+      botonAdoptar,
+      botonhistorial,
+      botonCerrar
+    ];
     return lista;
   }
 
