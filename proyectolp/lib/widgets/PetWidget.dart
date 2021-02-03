@@ -23,12 +23,12 @@ class PetWidget {
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[
-              Text('Nombre: '),
+              //Text('Nombre: '),
               Text(pet.nombre),
-              Text('\nEspecie: '),
-              Text(pet.especie),
-              Text('\nEdad: '),
-              Text(pet.edad.toString())
+              //Text('\nEspecie: '),
+              Text('\n'+pet.especie),
+              //Text('\nEdad: '),
+              Text('\n'+pet.edad.toString())
             ],
           )
         ]),
@@ -131,12 +131,12 @@ class PetWidget {
         Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            Text('Nombre'),
+            //Text('Nombre'),
             Text(pet.nombre),
-            Text('\nEspecie'),
-            Text(pet.especie),
-            Text('\nEdad'),
-            Text(pet.edad.toString())
+            //Text('\nEspecie'),
+            Text('\n'+pet.especie),
+            //Text('\nEdad'),
+            Text('\n'+pet.edad.toString())
           ],
         )
       ]),

@@ -84,7 +84,7 @@ class _LoginPageState extends State<LoginPage> {
             padding: EdgeInsets.symmetric(horizontal: 20.0, vertical: 15.0),
             child: RaisedButton(
               child: Container(
-                padding: EdgeInsets.symmetric(horizontal: 80.0, vertical: 15.0),
+                padding: EdgeInsets.symmetric(horizontal: 60.0, vertical: 15.0),
                 child: Text(
                   "Iniciar Sesion",
                   style: TextStyle(

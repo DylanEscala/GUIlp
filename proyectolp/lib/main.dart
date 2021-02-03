@@ -10,7 +10,7 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  static final String enlace="http://df46bc2ffdff.ngrok.io/api/v1/";
+  static final String enlace="http://1dcd5128e658.ngrok.io/api/v1/";
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

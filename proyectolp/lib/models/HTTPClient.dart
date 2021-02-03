@@ -16,7 +16,7 @@ class HTTPClient{
 
   static final HTTPClient _instance = new HTTPClient._internal();
 
-  final String _enlace="http://df46bc2ffdff.ngrok.io/api/v1/";
+  final String _enlace="http://1dcd5128e658.ngrok.io/api/v1/";
 
   String _authToken;
 
@@ -180,7 +180,7 @@ class HTTPClient{
   }
 
 
-  void subirUsuario(String user, String pass, String email) async {
+  Future<bool> subirUsuario(String user, String pass, String email) async {
     var bodyEncoded = jsonEncode(<String, String> {
       'username': user,
       'password': pass,
@@ -191,6 +191,7 @@ class HTTPClient{
     final response = await http.post(_enlace+'users', body: bodyEncoded, headers: _getRequestHeaders());
 
     print(response.body);
+    return response.statusCode>=200 && response.statusCode<400;
 
   }
 

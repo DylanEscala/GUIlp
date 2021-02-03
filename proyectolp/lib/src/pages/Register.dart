@@ -3,58 +3,95 @@ import 'package:proyectolp/models/HTTPClient.dart';
 
 class RegisterPage extends StatefulWidget {
   RegisterPage({Key key}) : super(key: key);
-  final String title = "Registrar Mascota";
+  final String title = "Registrar Usuario";
 
   @override
   _RegisterState createState() => _RegisterState();
 }
 
 class _RegisterState extends State<RegisterPage> {
-  void crearusuario() {
-    HTTPClient().subirUsuario(_username.text, _password.text, _correo.text);
-    Navigator.pop(context);
-    showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-              content: Container(
-                  height: 275,
-                  width: MediaQuery.of(context).size.width * 0.8,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: <Widget>[
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            IconButton(
-                              icon: Icon(Icons.check),
-                              color: Colors.lightGreen,
-                              iconSize: 20.0,
-                            ),
-                            SizedBox(width: 30),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: <Widget>[
-                                Text('Usuario creado satisfactoriamente'),
-                              ],
-                            )
-                          ]),
-                      RaisedButton(
-                        onPressed: () {
-                          print("hola");
-                          Navigator.pop(context, 'dialog');
-                        },
-                        child: Text('Aceptar'),
-                        color: Colors.green,
-                        textColor: Colors.white,
-                      )
-                    ],
-                  )));
-        });
+
+  void crearusuario() async{
+    bool respuestaservidor = await HTTPClient().subirUsuario(_username.text, _password.text, _correo.text);
+    if ((_password.text != _confirmationpassword.text) ||  !(respuestaservidor)) {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+                content: Container(
+                    height: MediaQuery.of(context).size.height * 0.3,
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    child: Center(child:ListView(
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            //mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              IconTheme(
+                                  child: Icon(Icons.error_outline),
+                                  data: IconThemeData(
+                                      color: Colors.red, size: 60.0)),
+                              //SizedBox(width: 30),
+                              Text('Usuario No Creado'),
+
+                              RaisedButton(
+                                onPressed: () {
+                                  Navigator.pop(context, 'dialog');
+                                },
+                                child: Text('Cerrar'),
+                                color: Colors.green,
+                                textColor: Colors.white,
+                              )
+                            ],
+                          )
+                        ]))));
+          });
+    } else {
+      Navigator.pop(context);
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+                content: Container(
+                    height: MediaQuery.of(context).size.height * 0.3,
+                    width: MediaQuery.of(context).size.width * 0.9,
+                    child: Center(child:ListView(
+                        scrollDirection: Axis.horizontal,
+                        shrinkWrap: true,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            //mainAxisSize: MainAxisSize.min,
+                            children: <Widget>[
+                              IconTheme(
+                                  child: Icon(Icons.check),
+                                  data: IconThemeData(
+                                      color: Colors.lightGreen, size: 60.0)),
+                              //SizedBox(width: 30),
+                              Text('Usuario Creado Satisfactoriamente'),
+
+                              RaisedButton(
+                                onPressed: () {
+                                  Navigator.pop(context, 'dialog');
+                                },
+                                child: Text('Cerrar'),
+                                color: Colors.green,
+                                textColor: Colors.white,
+                              )
+                            ],
+                          )
+                        ]))));
+          });
+    }
   }
 
   TextEditingController _username = TextEditingController();
   TextEditingController _password = TextEditingController();
+  TextEditingController _confirmationpassword = TextEditingController();
   TextEditingController _correo = TextEditingController();
 
   @override
@@ -83,9 +120,9 @@ class _RegisterState extends State<RegisterPage> {
                 width: MediaQuery.of(context).size.width * 0.8,
                 height: 40,
                 child: TextField(
-                  controller: _password,
+                  controller: _correo,
                   decoration: InputDecoration(
-                      border: OutlineInputBorder(), labelText: 'Contrasena'),
+                      border: OutlineInputBorder(), labelText: 'Correo'),
                 ),
               ),
               SizedBox(
@@ -95,9 +132,22 @@ class _RegisterState extends State<RegisterPage> {
                 width: MediaQuery.of(context).size.width * 0.8,
                 height: 40,
                 child: TextField(
-                  controller: _correo,
+                  controller: _password,
                   decoration: InputDecoration(
-                      border: OutlineInputBorder(), labelText: 'Correo'),
+                      border: OutlineInputBorder(), labelText: 'Clave'),
+                ),
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              Container(
+                width: MediaQuery.of(context).size.width * 0.8,
+                height: 40,
+                child: TextField(
+                  controller: _confirmationpassword,
+                  decoration: InputDecoration(
+                      border: OutlineInputBorder(),
+                      labelText: 'Confirmar Clave'),
                 ),
               ),
               SizedBox(
