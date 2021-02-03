@@ -29,39 +29,39 @@ class _MainState extends State<MainPage> {
   }
 
   List<Widget> botones(BuildContext context) {
-    Widget botonPonerEnAdopcion = RaisedButton(
+    Widget botonPonerEnAdopcion = SizedBox(width: 200,child:RaisedButton(
       onPressed: () {
         _redirDarAdopcion(context);
       },
       child: Text('Poner En Adopcion'),
       color: Colors.green,
       textColor: Colors.white,
-    );
-    Widget botonAdoptar = RaisedButton(
+    ));
+    Widget botonAdoptar = SizedBox(width: 200,child:RaisedButton(
       onPressed: () {
         _redirAdoptar(context);
       },
       child: Text('Adoptar'),
       color: Colors.green,
       textColor: Colors.white,
-    );
+    ));
     ;
-    Widget botonCerrar = RaisedButton(
+    Widget botonCerrar = SizedBox(width: 200,child:RaisedButton(
       onPressed: () {
         Navigator.of(context).pop();
       },
       child: Text('Cerrar sesion'),
       color: Colors.red,
       textColor: Colors.white,
-    );
-    Widget botonhistorial = RaisedButton(
+    ));
+    Widget botonhistorial = SizedBox(width: 200,child:RaisedButton(
       onPressed: () {
         showhistorial();
       },
       child: Text('Historial Adopcion'),
       color: Colors.green,
       textColor: Colors.white,
-    );
+    ));
     List<Widget> lista = [
       botonPonerEnAdopcion,
       botonAdoptar,
